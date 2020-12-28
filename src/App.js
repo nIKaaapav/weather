@@ -1,13 +1,17 @@
+import './App.scss';
+import React from 'react';
+import NavBar from './componets/NavBar/NavBar'
+import AppRouter from "./reuter/AppRouter";
 
-import './App.css';
+
 
 function App() {
 
-
   return (
-      <div>
-
-      </div>
+        <div className='app__wrapper'>
+            <NavBar/>
+            <AppRouter/>
+        </div>
   );
 }
 
