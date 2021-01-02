@@ -2,10 +2,27 @@ import {applyMiddleware, createStore} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import thunk from "redux-thunk";
 
-const initialState  = {
+
+if (!localStorage['city']){
+    localStorage.setItem('city', JSON.stringify([]));
+}
+
+
+
+let initialState  = {
     kiev: [],
     london: []
 };
+
+if(!!localStorage['city']){
+    for (let city of JSON.parse(localStorage['city'])) {
+        console.log(city);
+        initialState[city] = [];
+    }
+}
+
+
+
 
 const reduser= (state = initialState, action)=> {
     switch (action.type) {
@@ -21,6 +38,7 @@ const reduser= (state = initialState, action)=> {
                 ...currentState
             });
         case 'ADD_NEW_CITY':
+            localStorage['city'] = JSON.stringify([...Object.keys(state) ,action.payload]);
             return ({
                 ...state,
                 [action.payload]: [],

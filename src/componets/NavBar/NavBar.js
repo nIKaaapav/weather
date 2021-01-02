@@ -14,7 +14,7 @@ const NavBar = () => {
 
     const handlerClickOnAddCity = (e)=>{
         e.preventDefault();
-        dispatch({type: 'ADD_NEW_CITY', payload: inputCity.current.value.toLowerCase()})
+        dispatch({type: 'ADD_NEW_CITY', payload: inputCity.current.value.toLowerCase()});
     };
 
     return (

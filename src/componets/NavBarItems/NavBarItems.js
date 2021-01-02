@@ -1,12 +1,15 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import { withRouter } from "react-router";
 
-const NavBarItems = ({name}) => {
+
+const NavBarItems = ({history, name}) => {
     const dispatch = useDispatch();
 
     const hendelClickForDeleteCity = ()=>{
-        dispatch({type: 'DELETE_CITY', payload: name})
+        dispatch({type: 'DELETE_CITY', payload: name});
+        history.push('./')
     };
 
     return (
@@ -17,4 +20,4 @@ const NavBarItems = ({name}) => {
     );
 };
 
-export default NavBarItems;
+export default withRouter(NavBarItems);
