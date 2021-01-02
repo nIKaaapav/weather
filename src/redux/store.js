@@ -20,6 +20,11 @@ const reduser= (state = initialState, action)=> {
             return ({
                 ...currentState
             });
+        case 'ADD_NEW_CITY':
+            return ({
+                ...state,
+                [action.payload]: [],
+            });
         default:
             return state;
     }

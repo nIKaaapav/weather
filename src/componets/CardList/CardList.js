@@ -8,7 +8,7 @@ const CardList = ({city}) => {
     const item = city.split('')[0].toUpperCase()+city.slice(1);
     console.log(item);
     useEffect(()=>{
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Kiev&lang=ru&units=metric&APPID=a9a3a62789de80865407c0452e9d1c27`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=ru&units=metric&APPID=a9a3a62789de80865407c0452e9d1c27`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -25,10 +25,15 @@ const CardList = ({city}) => {
                 }
                 if (hoursNow===24) hoursNow='00';
                 let ourData =  data.list.filter(el => el.dt_txt.includes(`${hoursNow}:00:00`));
-                dispatch({type: 'city', payload: {
-                        city: city,
-                        data: ourData
-                }});
+                if ('cod'===200){
+                    dispatch({type: 'city', payload: {
+                            city: city,
+                            data: ourData
+                        }});
+                } else {
+
+                }
+
             });
 
 
