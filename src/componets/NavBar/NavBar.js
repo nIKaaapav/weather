@@ -1,9 +1,10 @@
 import React, {useRef} from 'react';
-import {Link} from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
 import NavBarItems from "../NavBarItems/NavBarItems";
+import actions from "../../redux/actions";
+import { withRouter } from "react-router";
 
-const NavBar = () => {
+const NavBar = ({history}) => {
     const citysItems = useSelector(state=> Object.keys(state));
     const inputCity = useRef(null);
     const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const NavBar = () => {
 
     const handlerClickOnAddCity = (e)=>{
         e.preventDefault();
-        dispatch({type: 'ADD_NEW_CITY', payload: inputCity.current.value.toLowerCase()});
+        dispatch(actions.addCityActionsAsinc(inputCity.current.value.toLowerCase(), history));
     };
 
     return (
@@ -28,4 +29,4 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default withRouter(NavBar);

@@ -2,14 +2,14 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import { withRouter } from "react-router";
+import actions from "../../redux/actions";
 
 
 const NavBarItems = ({history, name}) => {
     const dispatch = useDispatch();
 
     const hendelClickForDeleteCity = ()=>{
-        dispatch({type: 'DELETE_CITY', payload: name});
-        history.push('./')
+        dispatch(actions.deleteCityActionsAsync(name, history));
     };
 
     return (
