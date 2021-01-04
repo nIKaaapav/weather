@@ -1,18 +1,12 @@
 import React, {useEffect} from 'react';
 import Card from "../Card/Card";
-import { withRouter } from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import actions from '../../redux/actions'
 
-const CardList = ({ history ,city}) => {
-    const dispatch = useDispatch();
-    const weather = useSelector(state=> state[city]);
+const CardList = () => {
+    const cityItems = useSelector(state=> Object.keys(state));
 
-    useEffect(()=>{
-        dispatch(actions.fetchDataAboutCityAsync(city, history))
-    }, []);
-
-    const cardListWeather = weather.map(el => (<Card key={el.dt} data={el}/>));
+    const cardListWeather = cityItems.map((el,i) => (<Card key={i} city={el}/>));
 
     return (
         <div className='card-list__wrapper'>
@@ -21,4 +15,4 @@ const CardList = ({ history ,city}) => {
     );
 };
 
-export default withRouter(CardList);
+export default CardList;

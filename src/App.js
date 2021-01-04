@@ -19,6 +19,7 @@ const App = ()=>  {
   return (
         <div className='app__wrapper'>
             <NavBar/>
+            {/*<CardList/>*/}
             <AppRouter/>
         </div>
   );

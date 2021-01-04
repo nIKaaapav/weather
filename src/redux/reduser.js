@@ -93,7 +93,7 @@ const reduser = (state = initialState, action)=> {
             });
         case 'ADD_CITY_LOCATION_USER':
             const index = JSON.parse(localStorage['city']).indexOf(action.payload)
-            if (index>-1) return;
+            if (index>-1) return state;
             return ({
                 ...state,
                 [action.payload]: [],
