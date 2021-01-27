@@ -1,12 +1,20 @@
 import React, {useEffect} from 'react';
 import Card from "../Card/Card";
 import {useDispatch, useSelector} from "react-redux";
-import actions from '../../redux/actions'
+import actions from '../../redux/actions';
+import './CardList.scss'
 
-const CardList = () => {
-    const cityItems = useSelector(state=> Object.keys(state));
+const CardList = ({city}) => {
+    const cityData = useSelector(state=> state.data);
+    const locationUser = useSelector(state => state.locationUser);
 
-    const cardListWeather = cityItems.map((el,i) => (<Card key={i} city={el}/>));
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(actions.fetchDataAboutCityAsync(city, locationUser))
+    }, []);
+
+    const cardListWeather = cityData.map((data,i) => (<Card key={i} data={data}/>));
 
     return (
         <div className='card-list__wrapper'>

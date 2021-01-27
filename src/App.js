@@ -4,12 +4,11 @@ import NavBar from './componets/NavBar/NavBar'
 import AppRouter from "./reuter/AppRouter";
 import {useDispatch} from "react-redux";
 import actions from "./redux/actions";
-import CardList from "./componets/CardList/CardList";
+import SearchBar from './componets/SearchBar'
 
 
 
 const App = ()=>  {
-
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -19,7 +18,7 @@ const App = ()=>  {
   return (
         <div className='app__wrapper'>
             <NavBar/>
-            {/*<CardList/>*/}
+            <SearchBar/>
             <AppRouter/>
         </div>
   );

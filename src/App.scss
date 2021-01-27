@@ -15,10 +15,9 @@ body {
   background-color: lighten($color1, 10%);
 }
 
-.card-list__wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.card-list__wrapper{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .card-list__item{
@@ -37,6 +36,8 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  overflow: hidden;
   //display: grid;
   //grid-template-columns: 400px 1fr;
   //grid-gap: 20px;
