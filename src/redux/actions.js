@@ -42,19 +42,17 @@ export const addLocationOnNavigator = () => dispatch => {
             .then(res => res.json())
             .then(data => {
                 if(+data.cod === 200) {
-                    // dispatch(addGeolocationUser(data.name))
-                    // dispatch(addGeolocationUser('odessa'));
+                    dispatch(addGeolocationUser(data.name))
                 } else {
                     console.log('position no defined!!!');
                 }
             })
     };
 
-    dispatch(addGeolocationUser('odessa'));
+    // dispatch(addGeolocationUser('odessa'));
 
     if (navigator.geolocation) {
         console.log('Geolocation is supported!');
-        // dispatch(addCityUserActions('odessa'));
         navigator.geolocation.getCurrentPosition(success);
     }
 
